@@ -1,77 +1,42 @@
 <!DOCTYPE html>
-<html lang="pt">
+<html>
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>ECS Dogs - Puppy Love</title>
-  <style>
-    /* Reset e configurações globais */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
+<title>ECS Dogs</title>
+<style>
+    html {
+            font-family: Helvetica, Arial, sans-serif;
+            font-weight: 600;
+            font-size: 20pt;
+            text-transform: uppercase;
+            text-align: center;
+            background: linear-gradient(rgba(255,153,0,1) 0%, rgba(65,183,197,1) 100%);
+            color: white;
     }
-    body {
-      font-family: Helvetica, Arial, sans-serif;
-      font-weight: 600;
-      font-size: 20pt;
-      text-transform: uppercase;
-      text-align: center;
-      background: linear-gradient(135deg, rgb(104, 104, 104) 0%, rgb(180, 180, 180) 100%);
-      color: white;
-      height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      padding: 20px;
-    }
-    h1 {
-      margin-bottom: 20px;
-      text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
-    }
-    .img-container {
-      width: 100%;
-      max-width: 600px;
-      overflow: hidden;
-      border: 2px solid white;
-      border-radius: 25px;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
-    }
-    .img-container img {
-      width: 100%;
-      height: auto;
-      transition: opacity 0.5s ease-in-out;
-      opacity: 0;
+    img {
+        max-width: 60%;
+        height: 80vh;
+        border: 2px solid white;
+        border-radius: 25px;
     }
   </style>
 </head>
-<body onload="showImage()">
-  <h1>Puppy Love 3</h1>
-  <div class="img-container">
-    <img id="introImg" src="" alt="Imagem de cachorro">
-  </div>
-  <script>
-    // Cria um array com os links das imagens
-    const imgArray = [];
-    const bucket = "https://ws-assets-prod-iad-r-icn-ced060f0d38bc0b0.s3.ap-northeast-2.amazonaws.com/8c9036a7-7564-434c-b558-3588754e21f5/dogs/";
-    const format = ".jpeg";
-    for (let i = 0; i < 10; i++) {
-      imgArray.push(bucket + (i + 1) + format);
-    }
-    
-    // Função para exibir uma imagem aleatória com efeito de fade-in
-    function showImage() {
-      const imgNum = Math.floor(Math.random() * imgArray.length);
-      const objImg = document.getElementById("introImg");
-      objImg.style.opacity = 0;
-      setTimeout(() => {
-        objImg.src = imgArray[imgNum];
-      }, 300);
-      objImg.onload = () => {
-        objImg.style.opacity = 1;
-      };
-    }
-  </script>
-</body>
+<h1>Puppy Love</h1>
+<script language = "javascript">
+        var imgArray = new Array();
+        var bucket = "https://ws-assets-prod-iad-r-icn-ced060f0d38bc0b0.s3.ap-northeast-2.amazonaws.com/8c9036a7-7564-434c-b558-3588754e21f5/dogs/"
+        var format = ".jpeg"
+        for(i=0;i<10;i++){
+            imgArray[i] = (bucket+(i+1)+format);
+        }
+        console.log(imgArray)
+        function showImage(){
+            var imgNum = Math.round(Math.random()*9); // random number
+            console.log(imgNum)
+            var objImg = document.getElementById("introImg");
+            objImg.src = imgArray[imgNum];
+        }
+    </script>
+<body onload = "showImage()">
+        <img id = "introImg" border="0">
+    </body>
 </html>
